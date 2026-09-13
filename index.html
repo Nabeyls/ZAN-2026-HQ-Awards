@@ -237,6 +237,263 @@ footer strong{color:var(--gold2)} footer p{font-size:11px;color:#ffffff8e;margin
 @media(prefers-reduced-motion:reduce){
   *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
 }
+
+/* =========================================================
+   HQ AWARDS — MOBILE / TABLET RESPONSIVE ENHANCEMENTS
+   ========================================================= */
+@media (max-width: 920px){
+  nav{
+    height:64px;
+    padding:0 20px;
+  }
+  .brand{
+    font-size:11px;
+    letter-spacing:.10em;
+    max-width:72%;
+    line-height:1.25;
+  }
+  .navlinks{display:none}
+
+  .hero{
+    min-height:auto;
+    padding:100px 22px 82px;
+    background-position:center center !important;
+  }
+  .hero-inner,
+  .container{
+    width:100%;
+    max-width:none;
+  }
+  .hero h1{
+    font-size:clamp(42px,11vw,66px);
+    line-height:.98;
+    max-width:100%;
+  }
+  .hero p{
+    font-size:15px;
+    line-height:1.65;
+    max-width:100%;
+  }
+
+  .actions{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+  .actions .btn{
+    width:100%;
+    min-height:48px;
+    text-align:center;
+  }
+
+  .hero-stats{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+  .stat{
+    width:100%;
+    min-width:0;
+  }
+
+  section{
+    padding:64px 20px;
+  }
+  .timeline-wrap{
+    margin-top:-36px;
+  }
+  .timeline-card{
+    padding:20px;
+  }
+  .timeline{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .pillar-shell{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .pillar-tabs{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+  .pillar-tab{
+    padding:15px 12px;
+    text-align:center;
+  }
+  .pillar-tab:hover,
+  .pillar-tab.active{
+    transform:none;
+  }
+  .pillar-stage{
+    min-height:auto;
+    padding:24px;
+  }
+  .pillar-stage h3{
+    font-size:34px;
+  }
+  .dept-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .mechanics{
+    grid-template-columns:1fr;
+  }
+  .process-line{
+    grid-template-columns:1fr 1fr;
+  }
+  .process-step:not(:last-child):after{
+    display:none;
+  }
+
+  .eval-grid{
+    grid-template-columns:1fr;
+  }
+  .rule-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .cta{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:28px 22px;
+  }
+  .cta .btn{
+    width:100%;
+  }
+
+  .foot{
+    flex-direction:column;
+  }
+}
+
+@media (max-width: 600px){
+  body{
+    -webkit-text-size-adjust:100%;
+  }
+  nav{
+    height:58px;
+    padding:0 16px;
+  }
+  .brand{
+    font-size:10px;
+    max-width:100%;
+  }
+
+  .hero{
+    padding:86px 16px 64px;
+    min-height:auto;
+    background-position:center center !important;
+  }
+  .hero h1{
+    font-size:clamp(38px,12vw,52px);
+  }
+  .hero p{
+    font-size:14px;
+    line-height:1.65;
+  }
+
+  section{
+    padding:52px 16px;
+  }
+  .section-title{
+    font-size:clamp(30px,9vw,42px);
+  }
+  .section-intro{
+    font-size:13px;
+  }
+
+  .timeline-wrap{
+    margin-top:-20px;
+  }
+  .timeline{
+    grid-template-columns:1fr;
+  }
+  .timeline-card{
+    padding:16px;
+    border-radius:22px;
+  }
+  .phase{
+    padding:15px;
+  }
+
+  .pillar-tabs{
+    grid-template-columns:1fr;
+  }
+  .pillar-tab{
+    text-align:left;
+    padding:15px 16px;
+  }
+  .pillar-stage{
+    padding:20px;
+    border-radius:22px;
+  }
+  .pillar-stage h3{
+    font-size:30px;
+  }
+  .pillar-stage p{
+    font-size:12px;
+  }
+  .dept-grid{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+  .dept{
+    font-size:11px;
+    padding:11px 12px;
+  }
+  .pillar-badge{
+    width:100%;
+    justify-content:center;
+    text-align:center;
+  }
+
+  .mech{
+    padding:20px;
+  }
+  .process-line{
+    grid-template-columns:1fr;
+  }
+  .process-step{
+    padding:15px 12px;
+  }
+
+  .eval{
+    padding:20px;
+  }
+  .criterion{
+    align-items:flex-start;
+    font-size:11px;
+  }
+
+  .rule-grid{
+    grid-template-columns:1fr;
+  }
+  .rule{
+    padding:18px;
+  }
+
+  .cta{
+    padding:24px 18px;
+    border-radius:22px;
+  }
+  .cta h2{
+    font-size:30px;
+  }
+
+  footer{
+    padding:30px 16px;
+  }
+}
+
+/* Prevent long CTA labels from overflowing on narrow screens */
+.btn{
+  white-space:normal;
+  line-height:1.3;
+}
+
 </style>
 </head>
 
@@ -264,7 +521,7 @@ footer strong{color:var(--gold2)} footer p{font-size:11px;color:#ffffff8e;margin
     </p>
 
     <div class="actions">
-      <a class="btn primary" href="https://zuscoffee.sg.larksuite.com/share/base/form/shrlgmUnb3TKTrr76ntXk0yLZGc" target="_blank">🏆 Submit HQ Nomination</a>
+      <a class="btn primary" href="https://zuscoffee.sg.larksuite.com/share/base/form/shrlgHoufFZYdoWVOnr74BJTzgd" target="_blank">🏆 Submit HQ Nomination</a>
       <a class="btn ghost" href="https://zuscoffee.sg.larksuite.com/wiki/WajDwbnQZiZcfWk9jG0lw1mHgVe?from=from_copylink" target="_blank">📘 Review Our Corporate Values ↗</a>
       <a class="btn ghost" href="#pillars">Explore the 3 Pillars ↓</a>
     </div>
@@ -431,7 +688,7 @@ footer strong{color:var(--gold2)} footer p{font-size:11px;color:#ffffff8e;margin
           Make the nomination specific, evidence-based and grounded in the ZUS Corporate Values.
         </p>
       </div>
-      <a class="btn primary" href="https://zuscoffee.sg.larksuite.com/share/base/form/shrlgmUnb3TKTrr76ntXk0yLZGc" target="_blank">🏆 Submit HQ Nomination ↗</a>
+      <a class="btn primary" href="https://zuscoffee.sg.larksuite.com/share/base/form/shrlgHoufFZYdoWVOnr74BJTzgd" target="_blank">🏆 Submit HQ Nomination ↗</a>
     </div>
   </div>
 </section>
