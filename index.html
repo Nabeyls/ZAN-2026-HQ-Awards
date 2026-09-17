@@ -141,6 +141,13 @@ section{padding:88px 0;position:relative}
 .pillar-stage h3{font-family:Spectral,serif;font-size:40px;margin:8px 0 8px}
 .pillar-stage p{font-size:13px;color:var(--muted);max-width:650px}
 .dept-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:22px;position:relative;z-index:2}
+.branch-group{grid-column:1/-1;margin-top:8px}
+.branch-group:first-child{margin-top:0}
+.branch-name{
+  margin:0 0 8px;color:var(--gold2);font-size:10px;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase
+}
+.branch-depts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
 .dept{
   padding:11px 13px;border-radius:13px;background:rgba(255,255,255,.055);
   border:1px solid rgba(255,255,255,.08);font-size:12px;
@@ -173,7 +180,17 @@ section{padding:88px 0;position:relative}
 }
 .process-step small{display:block;color:var(--gold2);font-size:9px;letter-spacing:.1em;text-transform:uppercase}
 .process-step strong{display:block;margin-top:5px;font-size:12px}
-.no-vote{margin-top:15px;text-align:center;font-size:11px;color:var(--gold2)}
+.no-vote{
+  margin-top:24px;padding:20px 24px;text-align:center;
+  font-size:clamp(18px,2vw,28px);line-height:1.25;font-weight:900;
+  letter-spacing:.025em;color:#fff4d6;
+  border:1px solid rgba(241,216,162,.55);border-radius:18px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,226,157,.20),transparent 55%),
+    linear-gradient(135deg,rgba(215,176,106,.24),rgba(36,76,173,.34));
+  box-shadow:0 16px 38px rgba(0,0,0,.22),inset 0 0 0 1px rgba(255,255,255,.06)
+}
+.no-vote strong{color:var(--gold2);font-weight:900}
 
 /* evaluation */
 .eval-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
@@ -187,13 +204,22 @@ section{padding:88px 0;position:relative}
   border:1px solid rgba(255,255,255,.08);font-size:12px
 }
 .tick{color:var(--gold2);font-weight:900}
+.tick.optional-marker{transform:translateY(5px);font-size:18px;line-height:1}
 
 /* rules */
-.rule-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
-.rule{padding:20px}
+.rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:30px}
+.rule{
+  padding:26px;min-height:245px;position:relative;overflow:hidden;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease
+}
+.rule:before{
+  content:"";position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),rgba(241,216,162,.25),transparent)
+}
+.rule:hover{transform:translateY(-4px);border-color:rgba(241,216,162,.35);box-shadow:0 18px 38px rgba(0,0,0,.18)}
 .rule small{color:var(--gold2);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-.rule strong{display:block;margin-top:7px;font-size:15px}
-.rule p{font-size:12px;color:var(--muted);margin:8px 0 0}
+.rule strong{display:block;margin-top:12px;font-size:20px;line-height:1.35}
+.rule p{font-size:14px;line-height:1.65;color:var(--muted);margin:12px 0 0}
 
 /* CTA */
 .cta{
@@ -232,6 +258,7 @@ footer strong{color:var(--gold2)} footer p{font-size:11px;color:#ffffff8e;margin
   .timeline-card{padding:18px}
   .pillar-tabs{grid-template-columns:1fr}
   .dept-grid{grid-template-columns:1fr}
+  .branch-depts{grid-template-columns:1fr}
   .pillar-stage h3{font-size:34px}
   .process-line{grid-template-columns:1fr}
   .rule-grid{grid-template-columns:1fr}
@@ -666,6 +693,24 @@ html, body{
   html{scroll-behavior:auto}
 }
 
+/* Final responsive polish for the attention banner and eligibility cards */
+@media (max-width:920px){
+  .rule-grid{grid-template-columns:1fr;gap:14px}
+  .rule{min-height:auto;padding:24px}
+}
+@media (max-width:600px){
+  .no-vote{margin-top:20px;padding:18px 14px;font-size:clamp(17px,5.2vw,22px);border-radius:16px}
+  .no-vote span{display:inline-block;margin-top:4px;font-size:.72em;letter-spacing:.04em}
+  .rule{padding:21px 18px;border-radius:18px}
+  .rule strong{font-size:18px}
+  .rule p{font-size:12.5px;line-height:1.55}
+  .tick.optional-marker{transform:translateY(6px)}
+}
+@media (max-width:360px){
+  .no-vote{font-size:17px}
+  .rule strong{font-size:17px}
+}
+
 </style>
 </head>
 
@@ -796,7 +841,7 @@ html, body{
       <div class="process-step"><small>Step 04</small><strong>Management Evaluation</strong></div>
       <div class="process-step"><small>Step 05</small><strong>Winner Announcement</strong></div>
     </div>
-    <div class="no-vote">100% Management Evaluation · No public voting</div>
+    <div class="no-vote"><strong>100% MANAGEMENT EVALUATION</strong><br><span>No Public Voting</span></div>
   </div>
 </section>
 
@@ -815,7 +860,10 @@ html, body{
           <div class="criterion"><span>Quality of justification</span><span class="tick">✓</span></div>
           <div class="criterion"><span>Demonstrated impact</span><span class="tick">✓</span></div>
           <div class="criterion"><span>Evidence / examples provided</span><span class="tick">✓</span></div>
-          <div class="criterion"><span>Cross-functional Contribution (if applicable)</span><span class="tick">+</span></div>
+          <div class="criterion"><span>Cross-functional Contribution (if applicable)</span><span class="tick optional-marker">+</span></div>
+          <div class="criterion"><span>Innovation and continuous improvement</span><span class="tick">✓</span></div>
+          <div class="criterion"><span>Cultural role model</span><span class="tick">✓</span></div>
+          <div class="criterion"><span>Leadership and influence</span><span class="tick">✓</span></div>
         </div>
       </div>
 
@@ -824,12 +872,7 @@ html, body{
         <p>Top Management evaluates the shortlisted finalists from each pillar.</p>
         <div class="criteria">
           <div class="criterion"><span>Consistency in demonstrating the 7 Corporate Values</span><span class="tick">✓</span></div>
-          <div class="criterion"><span>Overall contribution to ZUS</span><span class="tick">✓</span></div>
-          <div class="criterion"><span>Leadership and influence</span><span class="tick">✓</span></div>
-          <div class="criterion"><span>Business impact</span><span class="tick">✓</span></div>
-          <div class="criterion"><span>Cross-functional Contribution (if applicable)</span><span class="tick">✓</span></div>
-          <div class="criterion"><span>Innovation and continuous improvement</span><span class="tick">✓</span></div>
-          <div class="criterion"><span>Cultural role model</span><span class="tick">✓</span></div>
+          <div class="criterion"><span>Overall Contribution &amp; Business Impact to ZUS</span><span class="tick">✓</span></div>
         </div>
       </div>
     </div>
@@ -841,10 +884,9 @@ html, body{
     <div class="section-kicker">05 · Eligibility & Submission</div>
     <h2 class="section-title">Before the nomination is submitted</h2>
     <div class="rule-grid">
-      <div class="glass rule"><small>Service</small><strong>More than 12 months with ZUS</strong><p>Nominees must meet the minimum service requirement.</p></div>
+      <div class="glass rule"><small>Service</small><strong>Full-time staff with more than 12 months of service at ZUS</strong><p>Nominees must be full-time employees and meet the minimum service requirement.</p></div>
       <div class="glass rule"><small>IR Record</small><strong>Good Disciplinary Standing</strong><p>Nominees must have no active or past Industrial Relations (IR) cases.</p></div>
       <div class="glass rule"><small>Values</small><strong>Meet at least 4 Corporate Values</strong><p>The nomination must demonstrate clear alignment with at least four of the ZUS COFFEE 7 Corporate Values.</p></div>
-      <div class="glass rule"><small>Supporting Material</small><strong>Evidence required · Video optional</strong><p>Provide supporting evidence such as photos, documents, results or other relevant examples. A supporting video may also be included but is optional.</p></div>
     </div>
   </div>
 </section>
@@ -878,26 +920,28 @@ const pillarData = [
   {
     title:"Commercial",
     desc:"Recognising outstanding contribution across ZUS commercial and growth functions.",
-    departments:[
-      "Brand & Studio","Growth & Marketing","Product Development","Business Development",
-      "Brand Marketing","Community","Growth & E-Commerce","Lifestyle",
-      "Technical & Product Development","Trade Marketing","International Franchise"
+    branches:[
+      {name:"MYSG", departments:["Brand & Studio","Business Development","Marketing","ZUS Signature","Strategic Partnership","Product"]},
+      {name:"ZCM", departments:["Growth & E-Commerce","Commercial","Community & Strategy"]},
+      {name:"Regional", departments:["Business Development"]}
     ]
   },
   {
     title:"Corporate",
     desc:"Recognising the HQ functions that strengthen strategy, people, governance and business enablement.",
-    departments:[
-      "People & Culture","CEO's Office","Chief Financial Officer’s Office","Finance","Strategy Office",
-      "Tech","Automation Business Partner","Governance, Risk & Compliance","Legal","Design, Build & Maintenance","General Affairs"
+    branches:[
+      {name:"MYSG", departments:["Finance","People & Culture","Design, Build & Maintenance"]},
+      {name:"ZCM", departments:["People & Culture","Finance"]},
+      {name:"Regional", departments:["Corporate Strategy","People & Culture","Corporate Governance, Risk & Compliance","Legal","Design, Build & Maintenance"]}
     ]
   },
   {
     title:"Operations",
     desc:"Recognising HQ operational functions that enable quality, supply, service and execution.",
-    departments:[
-      "Academy","Operations (Exclude DM)","Operations Support (CH & ZWAT)",
-      "Supply Chain & Procurement","Quality Assurance & Halal Management","Customer Operations"
+    branches:[
+      {name:"MYSG", departments:["Operations","Supply Chain","QA & Halal Management"]},
+      {name:"ZCM", departments:["Operations"]},
+      {name:"Regional", departments:["Supply Chain","QA & Halal Management","Operations"]}
     ]
   }
 ];
@@ -921,7 +965,15 @@ function renderPillar(index){
   label.textContent = "PILLAR " + String(index+1).padStart(2,"0") + " · " + data.title.toUpperCase();
   title.textContent = data.title;
   desc.textContent = data.desc;
-  grid.innerHTML = data.departments.map((d,i)=>`<div class="dept" style="animation-delay:${i*.035}s">${d}</div>`).join("");
+  let itemIndex = 0;
+  grid.innerHTML = data.branches.map(branch=>`
+    <div class="branch-group">
+      <div class="branch-name">${branch.name}</div>
+      <div class="branch-depts">
+        ${branch.departments.map(d=>`<div class="dept" style="animation-delay:${itemIndex++*.035}s">${d}</div>`).join("")}
+      </div>
+    </div>
+  `).join("");
 }
 
 function startAuto(){
